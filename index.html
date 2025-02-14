@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家族图谱</title>
+    <style>
+        .tree ul {
+            padding-left: 20px;
+            list-style-type: none;
+        }
+        .tree li {
+            margin: 10px 0;
+            position: relative;
+        }
+        .tree li::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -20px;
+            border-left: 1px solid #ccc;
+            height: 20px;
+        }
+        .tree li::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: -20px;
+            border-left: 1px solid #ccc;
+            height: 100%;
+        }
+        .tree li:last-child::after {
+            display: none;
+        }
+        .tree li span {
+            display: inline-block;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>家族图谱</h1>
+    <div class="tree">
+        <ul id="family-tree"></ul>
+    </div>
+
+    <script>
+        // 家族成员数据
+        const familyData = {
+            name: "祖父",
+            children: [
+                {
+                    name: "父亲",
+                    children: [
+                        { name: "儿子1" },
+                        { name: "儿子2" }
+                    ]
+                },
+                {
+                    name: "叔叔",
+                    children: [
+                        { name: "堂兄1" },
+                        { name: "堂兄2" }
+                    ]
+                }
+            ]
+        };
+
+        // 递归生成树形结构
+        function generateTree(data, parentElement) {
+            const li = document.createElement("li");
+            const span = document.createElement("span");
+            span.textContent = data.name;
+            li.appendChild(span);
+
+            if (data.children && data.children.length > 0) {
+                const ul = document.createElement("ul");
+                data.children.forEach(child => {
+                    generateTree(child, ul);
+                });
+                li.appendChild(ul);
+            }
+
+            parentElement.appendChild(li);
+        }
+
+        // 初始化树形结构
+        const familyTree = document.getElementById("family-tree");
+        generateTree(familyData, familyTree);
+    </script>
+</body>
+</html>
