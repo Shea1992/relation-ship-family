@@ -1,0 +1,24 @@
+{
+  "name": "vue-2-example",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@types/node": "^20.6.0",
+    "@types/nprogress": "^0.2.0",
+    "axios": "0.18.1",
+    "core-js": "^3.29.1",
+    "relation-graph": "2.2.10"
+  },
+  "devDependencies": {
+    "sass": "^1.59.2",
+    "vite": "^4.1.0",
+    "vite-plugin-vue2": "^2.0.3",
+    "vue": "2.7.14",
+    "vue-router": "^3.2.0",
+    "vue-template-compiler": "2.7.14",
+    "vuex": "3.4.0"
+  }
+}
